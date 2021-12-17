@@ -8,12 +8,10 @@
   <body>
     <div id="destination-page" class="destination-layout">
       <!-- 头部 -->
-      <header class="header-layout">
-        {{include './components/header/header.art'}}
-      </header>
+      <header class="header-layout">头部</header>
 
       <!-- 主体 -->
-      <div class="main-layout">{{include './components/main/main.art'}}</div>
+      <div class="main-layout">主体</div>
 
       <!-- 标签栏 -->
       <div class="tabbar-layout">
