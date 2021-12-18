@@ -4,7 +4,13 @@
   /* background-color: red; */
 }
 
+.header-layout .searchbox {
+  /* 335px/375px */
+  width: 89.333333%;
+}
+
 .main-layout {
+  display: flex;
   position: absolute;
   top: 149px;
   right: 0;
