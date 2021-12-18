@@ -13,7 +13,7 @@
       </header>
 
       <!-- 主体 -->
-      <div class="main-layout">{{include './components/main/main.art'}}</div>
+      <div class="main-layout">主体</div>
 
       <!-- 标签栏 -->
       <div class="tabbar-layout">

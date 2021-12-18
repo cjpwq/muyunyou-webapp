@@ -7,5 +7,4 @@ import './destination.css';
 // 组件
 import 'components/tabbar';
 import './components/header';
-import './components/main';
 // import 'components/backtop';
