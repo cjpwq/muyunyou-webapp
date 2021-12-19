@@ -29,7 +29,7 @@ class Tab {
   to(index) {
     this.setActiveItem(index);
 
-    return getDelayedData(`${URL}/${this.itemEls[index].dataset.id}`);
+    return getData(`${URL}/${this.itemEls[index].dataset.id}`);
   }
 }
 
