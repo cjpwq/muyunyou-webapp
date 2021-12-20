@@ -3,18 +3,13 @@ import { getJSON } from './ajax';
 
 // 获取数据
 const getData = (url, options) => {
-  const ajaxPromise = getJSON(url, { timeoutTime: TIMEOUT, ...options });
-  const resultPromise = ajaxPromise
+  return getJSON(url, { timeoutTime: TIMEOUT, ...options })
     .then(response => {
       if (response.code !== SUCC_CODE) throw new Error('出错了');
 
       return response.data;
     })
     .catch(err => console.log(err));
-
-  resultPromise.xhr = ajaxPromise.xhr;
-
-  return resultPromise;
 };
 
 // 延时

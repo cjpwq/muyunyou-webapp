@@ -1,5 +1,5 @@
 <ul class="tab">
-  <li class="tab-item" data-id="1">亚洲</li>
+  <li class="tab-item tab-item-active" data-id="1">亚洲</li>
   <li class="tab-item" data-id="2">欧洲</li>
   <li class="tab-item" data-id="3">非洲</li>
   <li class="tab-item" data-id="4">北美</li>
