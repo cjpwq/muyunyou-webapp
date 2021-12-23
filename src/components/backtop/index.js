@@ -1,9 +1,9 @@
 import './backtop.css';
 import 'icons/iconfont.css';
 
-import Scroll from 'utils/scroll';
-
 const CHANGED_CLASS_NAME = 'backtop-hidden';
+const INIT_STATE = 'init';
+const CHANGED_STATE = 'changed';
 
 class Backtop {
   constructor(el, critical_point, scrollContainer, eventEl = scrollContainer) {
@@ -16,25 +16,32 @@ class Backtop {
     // 监听滚动事件的元素
     this.eventEl = eventEl;
 
-    new Scroll(
-      {
-        critical_point,
-        change: () => {
-          this.show();
-        },
-        reset: () => {
-          this.hide();
-        }
-      },
-      scrollContainer,
-      eventEl
-    );
+    this.setState(INIT_STATE);
 
     this.bindEvent();
   }
 
+  // 设置状态
+  setState(state) {
+    this.state = state;
+  }
+
   // 绑定事件
   bindEvent() {
+    this.eventEl.addEventListener(
+      'scroll',
+      () => {
+        if (this.needChange()) {
+          this.setState(CHANGED_STATE);
+          this.change();
+        } else if (this.needReset()) {
+          this.setState(INIT_STATE);
+          this.reset();
+        }
+      },
+      false
+    );
+
     this.el.addEventListener(
       'click',
       () => {
@@ -52,14 +59,28 @@ class Backtop {
     });
   }
 
-  //   隐藏
-  hide() {
+  reset() {
     this.el.classList.add(CHANGED_CLASS_NAME);
   }
 
-  // 显示
-  show() {
+  needReset() {
+    return (
+      this.state !== INIT_STATE &&
+      this.scrollContainer.scrollTop <= this.critical_point
+    );
+  }
+
+  //   变化
+  change() {
     this.el.classList.remove(CHANGED_CLASS_NAME);
+  }
+
+  //   需要变化
+  needChange() {
+    return (
+      this.state !== CHANGED_STATE &&
+      this.scrollContainer.scrollTop > this.critical_point
+    );
   }
 }
 
